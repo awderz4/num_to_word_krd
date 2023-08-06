@@ -1,7 +1,7 @@
 name: num_to_word_krd
-description: A starting point for Dart libraries or applications.
+description: A Dart package to convert number to kurdish words.
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/my_org/my_repo
 
 environment:
   sdk: ^3.0.6
