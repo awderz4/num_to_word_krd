@@ -1,7 +1,7 @@
 import 'string_extension.dart';
 
 abstract class NumberToWordKrdConverter {
-  static const List<String> units = [
+  static const List<String> _units = [
     'سفر',
     'یه‌ک',
     'دوو',
@@ -24,7 +24,7 @@ abstract class NumberToWordKrdConverter {
     'نوزدە'
   ];
 
-  static const List<String> tens = [
+  static const List<String> _tens = [
     '',
     '',
     'بیست',
@@ -37,7 +37,7 @@ abstract class NumberToWordKrdConverter {
     'نەوەد'
   ];
 
-  static const List<String> hundreds = [
+  static const List<String> _hundreds = [
     '',
     'سەد',
     'دوو سەد',
@@ -50,7 +50,7 @@ abstract class NumberToWordKrdConverter {
     'نۆ سەد'
   ];
 
-  static const List<String> thousands = [
+  static const List<String> _thousands = [
     '',
     'هەزار',
     'ملیۆن',
@@ -59,7 +59,7 @@ abstract class NumberToWordKrdConverter {
   ];
 
   static String convert(int number) {
-    if (number == 0) return units[0];
+    if (number == 0) return _units[0];
 
     String result = '';
     int groupIndex = 0;
@@ -67,7 +67,7 @@ abstract class NumberToWordKrdConverter {
     while (number > 0) {
       if (number % 1000 != 0) {
         result =
-            '${_convertHundreds(number % 1000)} ${thousands[groupIndex]} و $result';
+            '${_convertHundreds(number % 1000)} ${_thousands[groupIndex]} و $result';
       }
       number ~/= 1000;
       groupIndex++;
@@ -80,17 +80,17 @@ abstract class NumberToWordKrdConverter {
     if (number == 0) return '';
 
     if (number < 20) {
-      return units[number];
+      return _units[number];
     } else if (number < 100) {
       final convertedOnes = _convertHundreds(number % 10);
-      final convertedTens = tens[number ~/ 10];
+      final convertedTens = _tens[number ~/ 10];
       if (convertedOnes.isEmpty) {
         return convertedTens;
       }
       return '$convertedTens و $convertedOnes';
     } else {
       final convertedHundredsPart = _convertHundreds(number % 100);
-      final convertedHundredsFull = hundreds[number ~/ 100];
+      final convertedHundredsFull = _hundreds[number ~/ 100];
       if (convertedHundredsPart.isEmpty) {
         return convertedHundredsFull;
       }
