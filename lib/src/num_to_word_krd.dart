@@ -24,39 +24,11 @@ abstract class NumberToWordKrdConverter {
     'نوزدە'
   ];
 
-  static const List<String> _tens = [
-    '',
-    '',
-    'بیست',
-    'سی',
-    'چل',
-    'پەنجا',
-    'شەست',
-    'حەفتا',
-    'هەشتا',
-    'نەوەد'
-  ];
+  static const List<String> _tens = ['', '', 'بیست', 'سی', 'چل', 'پەنجا', 'شەست', 'حەفتا', 'هەشتا', 'نەوەد'];
 
-  static const List<String> _hundreds = [
-    '',
-    'سەد',
-    'دوو سەد',
-    'سێ سەد',
-    'چوار سەد',
-    'پەنج سەد',
-    'شەش سەد',
-    'حەوت سەد',
-    'هەشت سەد',
-    'نۆ سەد'
-  ];
+  static const List<String> _hundreds = ['', 'سەد', 'دوو سەد', 'سێ سەد', 'چوار سەد', 'پێنج سەد', 'شەش سەد', 'حەوت سەد', 'هەشت سەد', 'نۆ سەد'];
 
-  static const List<String> _thousands = [
-    '',
-    'هەزار',
-    'ملیۆن',
-    'ملیار',
-    'ملیۆن ملیار'
-  ];
+  static const List<String> _thousands = ['', 'هەزار', 'ملیۆن', 'ملیار', 'ملیۆن ملیار'];
 
   static String convert(int number) {
     if (number == 0) return _units[0];
@@ -66,8 +38,7 @@ abstract class NumberToWordKrdConverter {
 
     while (number > 0) {
       if (number % 1000 != 0) {
-        result =
-            '${_convertHundreds(number % 1000)} ${_thousands[groupIndex]} و $result';
+        result = '${_convertHundreds(number % 1000)} ${_thousands[groupIndex]} و $result';
       }
       number ~/= 1000;
       groupIndex++;
